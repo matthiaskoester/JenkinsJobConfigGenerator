@@ -62,7 +62,7 @@ Group:
 	BracketClose;
 
 Config:
-	(abstract?="abstract")? "job" name=ID ("extends" parentConfig=[Config])? BracketOpen
+	(abstract?="abstract")? "job" name=ID ("extends" parentConfig=[Config])? (BracketOpen
 	(disabled?="isDisabled")?
 	(oldBuildHandling=OldBuildHandling)?
 	(executeConcurrent?="executeConcurrent")?
@@ -78,7 +78,7 @@ Config:
 	(wrapper=WrapperSection)?
 	(buildSection=BuildSection)?
 	(publisherSection=PublisherSection)?
-	BracketClose;
+	BracketClose)?;
 
 Matrix:
 	"matrix" matrix=[MatrixDecl];
@@ -98,10 +98,9 @@ ParameterSection:
 	BracketClose;
 
 Parameter:
-	name=STRING BracketOpen
+	name=STRING
 	type=ParameterType
-	("description" description=STRING)?
-	BracketClose;
+	("description" description=STRING)?;
 
 ParameterType:
 	StringParam | BooleanParam | ChoiceParam;
